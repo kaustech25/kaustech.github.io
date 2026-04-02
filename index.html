@@ -2,25 +2,79 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaustech | 个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kaustech iPhone Home</title>
     <style>
-        body { font-family: 'Inter', sans-serif; background: #0f172a; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .card { text-align: center; padding: 40px; border: 1px solid #1e293b; border-radius: 20px; background: #1e293b; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { font-size: 2.5rem; margin-bottom: 10px; background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        p { color: #94a3b8; font-size: 1.1rem; }
-        .links { margin-top: 20px; }
-        .btn { display: inline-block; padding: 10px 20px; margin: 5px; border-radius: 8px; background: #38bdf8; color: #0f172a; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+        /* --- 1. 全局样式 (模拟手机外框) --- */
+        body { margin: 0; padding: 0; background: #333; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+        .iphone-screen { width: 375px; height: 812px; background: url('https://w.wallhaven.cc/full/8o/wallhaven-8o9wvk.jpg') no-repeat center center; background-size: cover; border: 12px solid #000; border-radius: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; overflow: hidden; padding-top: 50px; }
+        
+        /* --- 2. 状态栏 (刘海 & 信号) --- */
+        .status-bar { height: 20px; padding: 0 25px; color: white; font-weight: bold; font-size: 14px; display: flex; justify-content: space-between; align-items: center; position: absolute; top: 10px; width: calc(100% - 50px); }
+        .notch { width: 150px; height: 30px; background: #000; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; position: absolute; top: -10px; left: calc(50% - 75px); }
+        
+        /* --- 3. 图标网格 --- */
+        .app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 20px 15px; grid-template-rows: repeat(6, 1fr); height: calc(100% - 150px); }
+        .app-item { text-align: center; color: white; text-decoration: none; cursor: pointer; transition: transform 0.2s; }
+        .app-item:active { transform: scale(0.9); }
+        
+        /* --- 4. 图标样式 --- */
+        .app-icon { width: 60px; height: 60px; border-radius: 13px; margin: 0 auto 5px auto; display: flex; justify-content: center; align-items: center; font-size: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .app-name { font-size: 12px; font-weight: 500; opacity: 0.9; }
+
+        /* --- 5. APP 图标绘制 --- */
+        .icon-tech    { background: linear-gradient(135deg, #007bff, #33ccff); } /* 蓝色 - 技术 */
+        .icon-lang    { background: linear-gradient(135deg, #ff9f43, #ff6b6b); } /* 橙色 - 语言 */
+        .icon-car     { background: linear-gradient(135deg, #1dd1a1, #10ac84); } /* 绿色 - 汽车 */
+        .icon-contact { background: linear-gradient(135deg, #a55eea, #7158e2); } /* 紫色 - 联系 */
+        .icon-project { background: linear-gradient(135deg, #ee5253, #f368e0); } /* 粉色 - 项目 */
+
+        /* --- 6. 底部 Dock 栏 --- */
+        .dock { width: calc(100% - 40px); height: 85px; background: rgba(255,255,255,0.25); border-radius: 30px; position: absolute; bottom: 20px; left: 20px; backdrop-filter: blur(10px); display: flex; justify-content: space-evenly; align-items: center; }
+        .dock .app-item { width: 60px; margin: 0; }
+        .dock .app-icon { width: 60px; height: 60px; margin-bottom: 0; }
+
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>KAUSTECH</h1>
-        <p>探索技术 · 创造价值 · 链接未来</p>
-        <div class="links">
-            <a href="#" class="btn">关于我</a>
-            <a href="mailto:your-email@example.com" class="btn">联系合作</a>
+    <div class="iphone-screen">
+        <div class="status-bar">
+            <span>9:41 AM</span>
+            <div class="notch"></div>
+            <span>📶 🔋</span>
+        </div>
+        
+        <div class="app-grid">
+            <a href="#" class="app-item">
+                <div class="app-icon icon-tech"><b>K</b></div>
+                <div class="app-name">技术</div>
+            </a>
+            <a href="#" class="app-item">
+                <div class="app-icon icon-car">🚗</div>
+                <div class="app-name">术语表</div>
+            </a>
+            <a href="#" class="app-item">
+                <div class="app-icon icon-lang">🇰🇷</div>
+                <div class="app-name">韩语翻译</div>
+            </a>
+            <a href="#" class="app-item">
+                <div class="app-icon icon-contact">📩</div>
+                <div class="app-name">联系我</div>
+            </a>
+            <a href="#" class="app-item">
+                <div class="app-icon icon-project">📁</div>
+                <div class="app-name">项目集</div>
+            </a>
+            <div class="app-item" style="visibility:hidden;"><div class="app-icon"></div><div class="app-name">空白</div></div>
+            <div class="app-item" style="visibility:hidden;"><div class="app-icon"></div><div class="app-name">空白</div></div>
+            <div class="app-item" style="visibility:hidden;"><div class="app-icon"></div><div class="app-name">空白</div></div>
+            </div>
+        
+        <div class="dock">
+            <a href="#" class="app-item"><div class="app-icon icon-tech"><b>K</b></div></a>
+            <a href="#" class="app-item"><div class="app-icon icon-car">🚗</div></a>
+            <a href="#" class="app-item"><div class="app-icon icon-lang">🇰🇷</div></a>
+            <a href="#" class="app-item"><div class="app-icon icon-project">📁</div></a>
         </div>
     </div>
 </body>
